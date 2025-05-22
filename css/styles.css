@@ -1,0 +1,631 @@
+/* ──────────────────────────────────────────────────────
+   IMPORT FONTS
+────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+/* ──────────────────────────────────────────────────────
+   RESET & GLOBAL STYLES
+────────────────────────────────────────────────────── */
+* {
+  background-color: #131313;
+  color: #F7F7F7;
+  font-family: "Source Code Pro", monospace;
+
+  margin: 0;
+  padding: 0;
+
+  cursor: url("https://cdn.prod.website-files.com/6708f85ff3d3cba6aff436fb/671251b239d7aeb290a31ac5_cursor-default%402x.svg")
+      1 0,
+    auto;
+  scroll-behavior: smooth;
+}
+
+/* ──────────────────────────────────────────────────────
+   TYPOGRAPHY
+────────────────────────────────────────────────────── */
+a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: inherit;
+}
+
+h1, h2, h3,
+header > h1 a {
+  text-transform: uppercase;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ──────────────────────────────────────────────────────
+   HEADER
+────────────────────────────────────────────────────── */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+  margin: 2em;
+  padding: 0 4em;
+}
+
+header h1 {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+header h1 a {
+  font-size: 1em;
+}
+
+header nav {
+  display: flex;
+}
+
+header nav ul {
+  display: flex;
+  justify-content: flex-end;
+}
+
+header li {
+  padding: 1.5em;
+}
+
+header a {
+  font-size: 1.5em;
+}
+
+/* ──────────────────────────────────────────────────────
+   MAIN: SECTION ONE
+────────────────────────────────────────────────────── */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6em;
+}
+
+.hero h2 {
+  font-size: 4.2em;
+  font-weight: 600;
+  overflow: hidden;
+  display: inline-block;
+}
+
+  .word {
+    display: inline-block;
+    will-change: transform;
+    overflow: hidden;
+  }
+
+/* ──────────────────────────────────────────────────────
+   SHOWREEL
+────────────────────────────────────────────────────── */
+.showreel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.showreel img {
+  height: 80%;
+  margin-bottom: 4em;
+}
+
+.showreel a,
+.projects > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20em;
+  height: 3em;
+  margin: 0;
+  border: none;
+  border-radius: 0.5em;
+
+  background-color: #F7F7F7;
+  color: #131313;
+
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+/* ──────────────────────────────────────────────────────
+   PROJECTS
+────────────────────────────────────────────────────── */
+.projects {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.projects ul {
+  width: 100%;
+  padding: 0;
+  margin: 4em;
+  border-top: 0.1em solid #444;
+  border-bottom: 0.1em solid #444;
+}
+
+.projects li {
+  padding: 1em 6em;
+  border-bottom: 0.1em solid #444;
+}
+
+.projects li:last-of-type {
+  border-bottom: none;
+}
+
+.projects li a {
+  font-size: 3em;
+  font-weight: 500;
+}
+
+/* ──────────────────────────────────────────────────────
+   PROJECT HOVER
+────────────────────────────────────────────────────── */
+
+.cursor {
+  position: fixed; /* <--- this is the key fix */
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity .4s ease-in-out;
+  pointer-events: none;
+}
+
+.cursor.visible {
+  opacity: 1;
+}
+
+.cursor img {
+  border-radius: .5em;
+  width: 35em;
+  height: auto;
+  display: block;
+  background-color: #131313;
+}
+
+/* Show image when hovering over links with data-cursor */
+[data-cursor]:hover ~ .cursor,
+[data-cursor]:hover + .cursor,
+body:has([data-cursor]:hover) .cursor {
+    opacity: 1;
+}
+
+/* extra */
+
+.cursorServices {
+  z-index: 1000;
+  background-color: #F7F7F7;
+  opacity: 0;
+  pointer-events: none;
+  border-radius: .25em;
+  padding: .3em .75em .4em;
+  font-size: 1.15em;
+  line-height: 1.5;
+  transition: opacity .2s;
+  position: fixed;
+  inset: 0% auto auto 0%;
+  width: 20em;
+}
+
+.cursorServices p{
+  padding: 1em;
+  background-color: transparent;
+  color: #131313;
+}
+
+.services:has( [data-cursor]:hover ) 
+.cursorServices{ opacity: 1; }
+
+
+/* ──────────────────────────────────────────────────────
+   SERVICES
+────────────────────────────────────────────────────── */
+.services {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.services h2 {
+  margin-left: 5em;
+  margin-bottom: 2em;
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+.services ul {
+  width: 100%;
+  padding: 0;
+  border-top: 0.1em solid #444;
+  border-bottom: 0.1em solid #444;
+}
+
+.services li {
+  padding: 1em 6em;
+  border-bottom: 0.1em solid #444;
+}
+
+.services li:last-of-type {
+  border-bottom: none;
+}
+
+.services li a {
+  font-size: 5em;
+  font-weight: 500;
+}
+
+/* ──────────────────────────────────────────────────────
+   ABOUT
+────────────────────────────────────────────────────── */
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  margin: 6em;
+}
+
+.about h2 {
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+.about h3 {
+  font-size: 7em;
+  font-weight: 600;
+}
+
+/* ──────────────────────────────────────────────────────
+   CLIENTS
+────────────────────────────────────────────────────── */
+.clients {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  margin: 6em;
+}
+
+.clients h2 {
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+.clients h3 {
+  font-size: 6em;
+  font-weight: 600;
+}
+
+/* ──────────────────────────────────────────────────────
+   MEOW (Image Section)
+────────────────────────────────────────────────────── */
+.meow {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.meow img {
+  height: 90%;
+  margin-bottom: 4em;
+}
+
+.meow video {
+  height: 90%;
+  margin-bottom: 4em;
+}
+
+/* ──────────────────────────────────────────────────────
+   FOOTER
+────────────────────────────────────────────────────── */
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 6em;
+  flex-flow: row;
+}
+
+footer section {
+  width: 50%;
+  padding-left: 2em;
+}
+
+footer h2 {
+  font-size: 1.2em;
+  font-weight: 400;
+  margin-bottom: 2em;
+}
+
+footer div {
+  width: 100%;
+  height: 70%;
+  background-color: #202020;
+}
+
+footer input {
+  width: 92%;
+  padding: 1em;
+  font-size: 1.2em;
+  font-style: italic;
+  border: none;
+  outline: none;
+  background-color: #202020;
+}
+
+footer ul {
+  display: flex;
+  flex-flow: column wrap;
+  width: 50%;
+  height: 30vh;
+}
+
+footer li {
+  padding-bottom: 0.5em;
+  font-size: 2.5em;
+  text-transform: uppercase;
+}
+
+footer a {
+  font-size: 2.5;
+  text-transform: uppercase;
+  padding-bottom: 0.5em;
+}
+
+/* ──────────────────────────────────────────────────────
+   BLOG
+────────────────────────────────────────────────────── */
+.blog {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 6em;
+}
+
+.blog div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 26em;
+  height: 20em;
+  margin-bottom: 2em;
+
+  background-color: #000;
+  border: 0.1em solid #333;
+  border-radius: 0.5em;
+  overflow: hidden;
+}
+
+.blog div h2 {
+  font-size: 1em;
+  font-weight: 400;
+  padding: 1em;
+  background-color: #000;
+}
+
+.blog .img,
+.blog img {
+  background-color: #fff;
+  height: 80%;
+  margin: 0;
+}
+
+/* ──────────────────────────────────────────────────────
+   ARTICLE & PROJECT
+────────────────────────────────────────────────────── */
+.heroProject {
+  display: flex;
+  flex-flow: column;
+  justify-content: left;
+  height: fit-content;
+  padding: 6em;
+  padding-bottom: 0;
+}
+
+.heroProject h2 {
+  font-size: 4.2em;
+  font-weight: 600;
+  margin-bottom: .2em;
+}
+
+.heroProject p, 
+.paragraph p {
+  font-size: 1.2em;
+  line-height: 1;
+  /* text-transform: uppercase; */
+  width: fit-content;
+  /* margin-bottom: 2em; */
+  line-height: 1.5;
+}
+
+.projectimage {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  height: auto;
+  padding: 6em;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+
+.projectimage img {
+  height: 90%;
+  border-radius: 1em;
+  margin-bottom: 4em;
+}
+
+.projectimage video {
+  height: 90%;
+  border-radius: 1em;
+  margin-bottom: 4em;
+}
+
+.projectInfo {
+  height: fit-content;
+  margin: 6em;
+  padding: 4em;
+  margin-top: 0;
+  display: flex;
+  flex-flow: column ;
+
+  background-color: #202020;
+  border-radius: 1em;
+}
+
+.projectInfo p,
+.callout p {
+  background-color: #202020;
+  /* margin: .5em; */
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+.projectInfo strong {
+  color: #7A8EFF; /* Or any other color you want */
+  background-color: #202020;
+  font-weight: 400;
+}
+
+.heroProject h3, .paragraph h3 {
+  font-size: 1.8em;
+  font-weight: 500;
+  margin-bottom: 1em;
+}
+
+.heroProject a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20em;
+  height: 3em;
+  margin: 0;
+  margin-top: 2em;
+  border: none;
+  border-radius: 0.5em;
+
+  background-color: #F7F7F7;
+  color: #131313;
+
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.paragraph {
+  margin: 6em;
+  margin-top: 0;
+}
+
+.paragraph p {
+  margin-bottom: 1em;
+  font-size: 1.4em;
+}
+
+.callout {
+  height: fit-content;
+  padding: 2em;
+  margin-top: 4em;
+  display: flex;
+  flex-flow: column ;
+
+  background-color: #202020;
+  border-radius: 1em;
+}
+
+.callout h2 {
+    background-color: #202020;
+    font-weight: 600;
+    margin-bottom: 1em;
+}
+
+.paragraph img {
+  margin-top: 4em;
+  width: 100%;
+}
+
+.articlewidth {
+  width: 80vw;
+}
+
+.layout {
+  display: flex;
+  flex-flow: row;
+}
+
+.content {
+  width: 20vw;
+  margin-top: 6em;
+  padding: 2em;
+  padding-left: 0;
+}
+
+.content h2 {
+  text-transform: none;
+  font-size: .8em;
+  font-weight: 500;
+  color: #ABABAB;
+}
+
+.content li {
+  text-transform: none;
+  margin: 1em 0 1em 0;
+}
+
+.content a {
+    transition: all ease-in-out .5s;
+}
+
+.content a:hover {
+  border-bottom: #F7F7F7 .1em solid;
+}
+
+.content > div {
+  position: sticky;
+  top: 17em;
+}
+
+.articlewidth .projectimage {
+  display: flex;
+  justify-content: end;
+  margin-left: 6em;
+  height: 76vh;
+}
+
+.articlewidth .projectimage img, .paragraph img {
+  height: 100%;
+}
+
+.paragraph p {
+  font-size: 1.2em;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.articleimage {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  padding-top: 4em;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+
+.articleimage img {
+  width: 85%;
+  border-radius: 1em;
+  margin-bottom: 4em;
+}
