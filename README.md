@@ -1,5 +1,3 @@
-# portfolio
-
 <H1>Portfolio Website</H1>
 This is my personal portfolio website showcasing a selection of my professional, academic, and personal projects. Built with HTML, CSS, JavaScript, and animated using GSAP, the design incorporates elements from Osmo.supply for a sleek and modern look.
 
